@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">My Finance</string>
+    <string name="date_range_example">с 01.07.2023 по 01.08.2023</string>
+</resources>
