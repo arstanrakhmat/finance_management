@@ -20,16 +20,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.myfinance.R
 import com.example.myfinance.model.FinanceInfo
 import com.example.myfinance.model.Type
+import com.example.myfinance.navigation.FinanceScreens
 
 @Composable
-@Preview
-fun MooneyLeftScreen() {
+fun MooneyLeftScreen(navController: NavController) {
     Surface(
         modifier = Modifier
             .fillMaxSize(), color = colorResource(id = R.color.less_white)
@@ -53,7 +53,9 @@ fun MooneyLeftScreen() {
             )
 
             ShowMoneyLeft(
-                modifier = Modifier.padding(top = 24.dp), list = listOf(
+                modifier = Modifier.padding(top = 24.dp),
+                navController = navController,
+                list = listOf(
                     FinanceInfo(
                         amount = 13500,
                         dt = 13438,
@@ -82,14 +84,14 @@ fun MooneyLeftScreen() {
 }
 
 @Composable
-fun ShowMoneyLeft(modifier: Modifier, list: List<FinanceInfo>) {
+fun ShowMoneyLeft(modifier: Modifier, navController: NavController, list: List<FinanceInfo>) {
     Surface(modifier = modifier, color = Color.White) {
         LazyColumn(modifier = Modifier.padding(16.dp)) {
             items(list) { detail ->
                 OneFinanceItem(
                     financeInfo = detail,
                     onItemClick = { selected ->
-                        //TODO: handle click event
+                        navController.navigate(FinanceScreens.DetailsScreen.name + "/$selected")
                     })
             }
         }

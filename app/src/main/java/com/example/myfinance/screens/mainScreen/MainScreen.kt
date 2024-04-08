@@ -39,9 +39,8 @@ import com.example.myfinance.screens.mainScreen.goal.GoalsScreen
 import com.example.myfinance.screens.mainScreen.income.IncomeScreen
 import com.example.myfinance.screens.mainScreen.mooneyLeft.MooneyLeftScreen
 
-@Preview
 @Composable
-fun MainScreen(navController: NavController = rememberNavController()) {
+fun MainScreen(navController: NavController) {
     Column(
         Modifier
             .fillMaxWidth()
@@ -50,7 +49,7 @@ fun MainScreen(navController: NavController = rememberNavController()) {
         verticalArrangement = Arrangement.Top
     ) {
         DateRange()
-        TabLayout()
+        TabLayout(navController = navController)
     }
 }
 
@@ -84,7 +83,7 @@ fun DateRange() {
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun TabLayout() {
+fun TabLayout(navController: NavController) {
     val titles = listOf("Остаток", "Доходы", "Расходы", "Цели")
     var selectedTabIndex by remember {
         mutableIntStateOf(0)
@@ -132,8 +131,8 @@ fun TabLayout() {
                 .fillMaxWidth()
                 .weight(1f)
         ) { index ->
-            when(index) {
-                0 -> MooneyLeftScreen()
+            when (index) {
+                0 -> MooneyLeftScreen(navController = navController)
                 1 -> IncomeScreen()
                 2 -> ExpensesScreen()
                 3 -> GoalsScreen()
