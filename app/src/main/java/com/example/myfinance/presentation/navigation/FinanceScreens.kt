@@ -1,4 +1,4 @@
-package com.example.myfinance.navigation
+package com.example.myfinance.presentation.navigation
 
 enum class FinanceScreens {
     MainScreen,

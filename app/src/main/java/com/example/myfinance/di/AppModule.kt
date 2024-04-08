@@ -2,8 +2,8 @@ package com.example.myfinance.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.myfinance.data.FinanceDao
-import com.example.myfinance.data.FinanceDatabase
+import com.example.myfinance.data.database.FinanceDao
+import com.example.myfinance.data.database.FinanceDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

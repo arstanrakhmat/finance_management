@@ -1,4 +1,4 @@
-package com.example.myfinance.screens.mainScreen
+package com.example.myfinance.presentation.screens.mainScreen
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
@@ -34,10 +34,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.myfinance.R
-import com.example.myfinance.screens.mainScreen.expenses.ExpensesScreen
-import com.example.myfinance.screens.mainScreen.goal.GoalsScreen
-import com.example.myfinance.screens.mainScreen.income.IncomeScreen
-import com.example.myfinance.screens.mainScreen.mooneyLeft.MooneyLeftScreen
+import com.example.myfinance.presentation.screens.mainScreen.expenses.ExpensesScreen
+import com.example.myfinance.presentation.screens.mainScreen.goal.GoalsScreen
+import com.example.myfinance.presentation.screens.mainScreen.income.IncomeScreen
+import com.example.myfinance.presentation.screens.mainScreen.mooneyLeft.MooneyLeftScreen
 
 @Composable
 fun MainScreen(navController: NavController) {

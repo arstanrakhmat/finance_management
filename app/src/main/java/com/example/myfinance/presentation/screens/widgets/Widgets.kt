@@ -1,4 +1,4 @@
-package com.example.myfinance.screens.widgets
+package com.example.myfinance.presentation.screens.widgets
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable

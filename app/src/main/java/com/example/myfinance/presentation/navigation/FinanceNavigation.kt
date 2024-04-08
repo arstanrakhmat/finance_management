@@ -1,4 +1,4 @@
-package com.example.myfinance.navigation
+package com.example.myfinance.presentation.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
@@ -6,8 +6,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.myfinance.screens.details.DetailScreen
-import com.example.myfinance.screens.mainScreen.MainScreen
+import com.example.myfinance.presentation.screens.details.DetailScreen
+import com.example.myfinance.presentation.screens.mainScreen.MainScreen
 
 @Composable
 fun FinanceNavigation() {

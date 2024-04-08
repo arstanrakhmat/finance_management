@@ -1,10 +1,10 @@
-package com.example.myfinance.model
+package com.example.myfinance.data.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "finance_tbl")
-data class FinanceInfo(
+data class FinanceInfoDbModel(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val amount: Int,

@@ -1,4 +1,4 @@
-package com.example.myfinance
+package com.example.myfinance.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.myfinance.navigation.FinanceNavigation
+import com.example.myfinance.presentation.navigation.FinanceNavigation
 import com.example.myfinance.ui.theme.MyFinanceTheme
 
 class MainActivity : ComponentActivity() {

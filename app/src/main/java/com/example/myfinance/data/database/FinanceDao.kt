@@ -1,25 +1,24 @@
-package com.example.myfinance.data
+package com.example.myfinance.data.database
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.myfinance.model.FinanceInfo
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface FinanceDao {
 
     @Query("SELECT * FROM finance_tbl")
-    fun getAllFinanceInfo() : Flow<List<FinanceInfo>>
+    fun getAllFinanceInfo() : Flow<List<FinanceInfoDbModel>>
 
     @Query("SELECT * FROM finance_tbl WHERE isIncome == false")
-    fun getIncomeList() : Flow<List<FinanceInfo>>
+    fun getIncomeList() : Flow<List<FinanceInfoDbModel>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertIncome(financeInfo: FinanceInfo)
+    fun insertIncome(financeInfoDbModel: FinanceInfoDbModel)
 
     @Delete
-    fun deleteIncome(financeInfo: FinanceInfo)
+    fun deleteIncome(financeInfoDbModel: FinanceInfoDbModel)
 }

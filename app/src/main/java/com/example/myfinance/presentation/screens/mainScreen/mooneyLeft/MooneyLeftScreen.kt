@@ -1,4 +1,4 @@
-package com.example.myfinance.screens.mainScreen.mooneyLeft
+package com.example.myfinance.presentation.screens.mainScreen.mooneyLeft
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -24,9 +24,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.myfinance.R
-import com.example.myfinance.model.FinanceInfo
-import com.example.myfinance.model.Type
-import com.example.myfinance.navigation.FinanceScreens
+import com.example.myfinance.data.database.FinanceInfoDbModel
+import com.example.myfinance.data.database.Type
+import com.example.myfinance.presentation.navigation.FinanceScreens
 
 @Composable
 fun MooneyLeftScreen(navController: NavController) {
@@ -56,21 +56,21 @@ fun MooneyLeftScreen(navController: NavController) {
                 modifier = Modifier.padding(top = 24.dp),
                 navController = navController,
                 list = listOf(
-                    FinanceInfo(
+                    FinanceInfoDbModel(
                         amount = 13500,
                         dt = 13438,
                         comment = "",
                         isIncome = true,
                         type = Type.SAVING
                     ),
-                    FinanceInfo(
+                    FinanceInfoDbModel(
                         amount = 500,
                         dt = 134328,
                         comment = "",
                         isIncome = false,
                         type = Type.TRANSPORT
                     ),
-                    FinanceInfo(
+                    FinanceInfoDbModel(
                         amount = 2000,
                         dt = 17374,
                         comment = "",
@@ -84,12 +84,12 @@ fun MooneyLeftScreen(navController: NavController) {
 }
 
 @Composable
-fun ShowMoneyLeft(modifier: Modifier, navController: NavController, list: List<FinanceInfo>) {
+fun ShowMoneyLeft(modifier: Modifier, navController: NavController, list: List<FinanceInfoDbModel>) {
     Surface(modifier = modifier, color = Color.White) {
         LazyColumn(modifier = Modifier.padding(16.dp)) {
             items(list) { detail ->
                 OneFinanceItem(
-                    financeInfo = detail,
+                    financeInfoDbModel = detail,
                     onItemClick = { selected ->
                         navController.navigate(FinanceScreens.DetailsScreen.name + "/$selected")
                     })
@@ -100,22 +100,22 @@ fun ShowMoneyLeft(modifier: Modifier, navController: NavController, list: List<F
 
 @Composable
 fun OneFinanceItem(
-    financeInfo: FinanceInfo,
-    onItemClick: (FinanceInfo) -> Unit = {}
+    financeInfoDbModel: FinanceInfoDbModel,
+    onItemClick: (FinanceInfoDbModel) -> Unit = {}
 ) {
 
     Column(
         modifier = Modifier
             .padding(bottom = 8.dp)
             .fillMaxWidth()
-            .clickable { onItemClick(financeInfo) },
+            .clickable { onItemClick(financeInfoDbModel) },
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
                 painter = painterResource(
-                    id = when (financeInfo.type) {
+                    id = when (financeInfoDbModel.type) {
                         Type.SALARY -> R.drawable.ic_type_salary
                         Type.BUSINESS_INCOME -> R.drawable.ic_bussines_income
                         Type.DEBT_CREDIT -> R.drawable.ic_debt_credit
@@ -141,7 +141,7 @@ fun OneFinanceItem(
             ) {
 
                 Text(
-                    text = when (financeInfo.type) {
+                    text = when (financeInfoDbModel.type) {
                         Type.OTHER -> "Другое"
                         Type.SALARY -> "Заработная плата"
                         Type.BUSINESS_INCOME -> "Доход от бизнеса"
@@ -162,10 +162,10 @@ fun OneFinanceItem(
 
                 Text(
                     modifier = Modifier.padding(4.dp),
-                    text = if (financeInfo.isIncome) {
-                        "${financeInfo.amount} c"
-                    } else "-${financeInfo.amount} c",
-                    color = if (financeInfo.isIncome) {
+                    text = if (financeInfoDbModel.isIncome) {
+                        "${financeInfoDbModel.amount} c"
+                    } else "-${financeInfoDbModel.amount} c",
+                    color = if (financeInfoDbModel.isIncome) {
                         colorResource(id = R.color.row_indicator)
                     } else Color.Red,
                     fontSize = 18.sp,
@@ -174,7 +174,7 @@ fun OneFinanceItem(
             }
 
             Text(
-                text = financeInfo.dt.toString(),
+                text = financeInfoDbModel.dt.toString(),
                 color = colorResource(id = R.color.gray),
                 fontSize = 12.sp,
                 fontWeight = FontWeight(400)

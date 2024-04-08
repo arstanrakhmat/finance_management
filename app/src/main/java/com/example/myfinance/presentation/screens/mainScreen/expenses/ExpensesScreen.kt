@@ -1,4 +1,4 @@
-package com.example.myfinance.screens.mainScreen.expenses
+package com.example.myfinance.presentation.screens.mainScreen.expenses
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
