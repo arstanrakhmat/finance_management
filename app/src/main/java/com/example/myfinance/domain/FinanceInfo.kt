@@ -1,6 +1,7 @@
 package com.example.myfinance.domain
 
 import com.example.myfinance.data.database.Type
+import java.io.Serializable
 
 data class FinanceInfo(
     val id: Int = 0,
@@ -9,4 +10,4 @@ data class FinanceInfo(
     val comment: String,
     val isIncome: Boolean,
     val type: Type
-)
+) : Serializable

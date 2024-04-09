@@ -11,13 +11,16 @@ import kotlinx.coroutines.flow.Flow
 interface FinanceDao {
 
     @Query("SELECT * FROM finance_tbl")
-    fun getAllFinanceInfo() : Flow<List<FinanceInfoDbModel>>
+    fun getAllFinanceInfo(): Flow<List<FinanceInfoDbModel>>
 
     @Query("SELECT * FROM finance_tbl WHERE isIncome == false")
-    fun getIncomeList() : Flow<List<FinanceInfoDbModel>>
+    fun getIncomeList(): Flow<List<FinanceInfoDbModel>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertIncome(financeInfoDbModel: FinanceInfoDbModel)
+
+    @Query("SELECT * FROM finance_tbl WHERE :id == id")
+    fun getOneFinanceInfoItem(id: Int): FinanceInfoDbModel
 
     @Delete
     fun deleteIncome(financeInfoDbModel: FinanceInfoDbModel)

@@ -24,5 +24,9 @@ class FinanceRepositoryImpl(private val financeDao: FinanceDao) : FinanceReposit
             }
     }
 
+    override fun getOneFinanceInfoItem(id: Int): FinanceInfo {
+        return mapper.mapDbModelToEntity(financeDao.getOneFinanceInfoItem(id))
+    }
+
 
 }

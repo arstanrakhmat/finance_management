@@ -19,12 +19,12 @@ fun FinanceNavigation() {
 
         val route = FinanceScreens.DetailsScreen.name
         composable("$route/{spent}", arguments = listOf(
-            navArgument(name = "spent") {
-                type = NavType.StringType
+            navArgument(name = "id") {
+                type = NavType.IntType
             }
         )) { navBack ->
-            navBack.arguments?.getString("spent").let { spent ->
-                DetailScreen(navController = navController, spend = spent)
+            navBack.arguments?.getInt("id").let { id ->
+                DetailScreen(navController = navController, id = id)
             }
         }
     }
