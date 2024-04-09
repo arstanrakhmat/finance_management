@@ -93,4 +93,9 @@ dependencies {
     //json converter
     implementation(libs.retrofit.json.converter)
 
+    //
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.lifedata.ktx)
+
 }
